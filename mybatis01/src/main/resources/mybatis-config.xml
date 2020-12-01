@@ -7,6 +7,11 @@
     <properties resource="db.properties" >
         <property name="pwd" value="123"/>
     </properties>
+    <!--use alias-->
+    <typeAliases>
+        <typeAlias type="com.he.pojo.User" alias="user"/>
+        <package name="com.he.dao"/>
+    </typeAliases>
     <environments default="test">
         <environment id="development">
             <transactionManager type="JDBC"></transactionManager>
