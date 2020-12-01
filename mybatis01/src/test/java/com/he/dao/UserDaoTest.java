@@ -3,6 +3,7 @@ package com.he.dao;
 import com.he.pojo.User;
 import com.he.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -11,6 +12,7 @@ import java.util.Map;
 
 public class UserDaoTest {
 
+    static Logger logger = Logger.getLogger(UserDao.class);
     @Test
     public void test(){
         //获取 sql session 对象
@@ -33,7 +35,7 @@ public class UserDaoTest {
         sqlSession.commit();//所有的 增删改都需要  commit 提交事务才能生效
         sqlSession.close();
     }
-    
+
     //使用map  对象绑定参数， xml 中只需要按照  map中定义的key 接受值就行，
     // 也可以接受一部分  必须更新部分字段
     @Test
@@ -71,5 +73,11 @@ public class UserDaoTest {
         int deleteUser = userDao.deleteUser(5);
         sqlSession.commit();
         sqlSession.close();
+    }
+    @Test
+    public void log4j(){
+        logger.info("我是info");
+        logger.debug("我是debug");
+        logger.error("我是error");
     }
 }

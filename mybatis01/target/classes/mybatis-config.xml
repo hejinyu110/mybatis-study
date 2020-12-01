@@ -4,8 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <!--db config file in top-->
-    <properties resource="db.properties" />
-    <environments default="test">
+    <properties resource="db.properties" >
+        <property name="pwd" value="123"/>
+    </properties>
+    <!--use alias-->
+    <typeAliases>
+        <typeAlias type="com.he.pojo.User" alias="user"/>
+        <package name="com.he.dao"/>
+    </typeAliases>
+    <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"></transactionManager>
             <dataSource type="POOLED">
@@ -29,5 +36,7 @@
     <!-- mapper.xml register-->
     <mappers>
         <mapper resource="com/he/dao/UserMapper.xml" />
+        <!--<mapper class="com.he.dao.UserDao"/>  名称不需一样，并且在同一个目录-->
+        <package name=""/>
     </mappers>
 </configuration>

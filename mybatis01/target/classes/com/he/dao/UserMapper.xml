@@ -4,19 +4,24 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace bind userdao interface-->
 <mapper namespace="com.he.dao.UserDao">
-    <select id="getUserList" resultType="com.he.pojo.User">
+    <!---->
+    <resultMap id="UserMap" type="User">
+        <result column="id" property="id"/>
+        <result column="pwd" property="pwd"/>
+    </resultMap>
+    <select id="getUserList" resultType="user">
         select * from user
     </select>
-    <select id="getUser" resultType="com.he.pojo.User">
+    <select id="getUser" resultType="user">
         select * from user where id =#{id};
     </select>
-    <insert id="addUser" parameterType="com.he.pojo.User">
+    <insert id="addUser" parameterType="user">
         insert into user(`id`,`name`,`pwd`) values(#{id},#{name},#{pwd});
     </insert>
     <insert id="addUser2" parameterType="map">
         insert into user(`id`,`name`,`pwd`) values(#{userId},#{userName},#{userPwd});
     </insert>
-    <update id="updateUser" parameterType="com.he.pojo.User">
+    <update id="updateUser" parameterType="user">
         update user set pwd=#{pwd},name=#{name} where id =#{id};
     </update>
     <delete id="deleteUser" >
