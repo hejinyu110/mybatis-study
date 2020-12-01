@@ -15,5 +15,5 @@ public interface UserDao {
     User getUser(int id);
     int updateUser(User user);
     int deleteUser(int id);
-
+    List<User> getUserByLimit(Map<String,Object> map);
 }

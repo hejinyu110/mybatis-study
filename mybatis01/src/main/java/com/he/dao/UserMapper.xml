@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- namespace bind userdao interface-->
+<!-- 指定当前的命令空间类 namespace bind userdao interface-->
 <mapper namespace="com.he.dao.UserDao">
-    <!---->
+    <!--如果数据库字段和需要的字段key  不一样可以使用resultMap 转换赌赢的字段key 名-->
     <resultMap id="UserMap" type="User">
         <result column="id" property="id"/>
         <result column="pwd" property="pwd"/>
@@ -27,4 +27,7 @@
     <delete id="deleteUser" >
         delete from user where id =#{id};
     </delete>
+    <select id="getUserByLimit" parameterType="map" resultMap="UserMap">
+        select * from user limit #{startIndex},#{pageSize}
+    </select>
 </mapper>
