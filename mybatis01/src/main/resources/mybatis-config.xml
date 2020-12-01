@@ -3,7 +3,11 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <environments default="development">
+    <!--db config file in top-->
+    <properties resource="db.properties" >
+        <property name="pwd" value="123"/>
+    </properties>
+    <environments default="test">
         <environment id="development">
             <transactionManager type="JDBC"></transactionManager>
             <dataSource type="POOLED">
@@ -12,6 +16,16 @@
                 <property name="username" value="root"/>
                 <property name="password" value="123"/>
             </dataSource>
+        </environment>
+        <environment id="test">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}" />
+                <property name="url" value="${url}"/>
+                <property name="username" value="${name}"/>
+                <property name="password" value="${pwd}}"/>
+            </dataSource>
+
         </environment>
     </environments>
     <!-- mapper.xml register-->
