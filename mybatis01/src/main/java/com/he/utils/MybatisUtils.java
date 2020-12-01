@@ -21,6 +21,8 @@ public class MybatisUtils {
     }
     //sqlsession 获取实例
     public static SqlSession getSqlSession(){
-        return sqlSessionFactory.openSession();
+        //默认是不开启事务自动提交的，如果设置为true 以后就不用每次都手动提交 默认是false
+//        return sqlSessionFactory.openSession(true);
+        return sqlSessionFactory.openSession(true);
     }
 }

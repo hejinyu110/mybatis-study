@@ -2,6 +2,7 @@ package com.he.dao;
 
 import com.he.pojo.User;
 import com.he.utils.MybatisUtils;
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -93,4 +94,29 @@ public class UserDaoTest {
         }
         sqlSession.close();
     }
+    @Test
+    public void getUserByLimitByRowBounds(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        RowBounds rowBounds = new RowBounds(0, 2);
+        List<User> userList = sqlSession.selectList("com.he.dao.UserDao.getUserByLimitByRowBounds",null,rowBounds);
+        for (User user : userList) {
+            System.out.println(user.getName());
+        }
+        sqlSession.close();
+    }
+
+    @Test
+    public void getUserList1(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        //执行sql
+        UserDao userDao = sqlSession.getMapper(UserDao.class);
+        List<User> userList = userDao.getUserList1();
+        for (User user : userList) {
+            System.out.println(user.getName());
+        }
+        sqlSession.close();
+    }
+
+
+
 }
