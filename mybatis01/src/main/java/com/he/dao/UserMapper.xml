@@ -4,6 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace bind userdao interface-->
 <mapper namespace="com.he.dao.UserDao">
+    <!---->
+    <resultMap id="UserMap" type="User">
+        <result column="id" property="id"/>
+        <result column="pwd" property="pwd"/>
+    </resultMap>
     <select id="getUserList" resultType="user">
         select * from user
     </select>

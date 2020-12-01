@@ -36,5 +36,7 @@
     <!-- mapper.xml register-->
     <mappers>
         <mapper resource="com/he/dao/UserMapper.xml" />
+        <!--<mapper class="com.he.dao.UserDao"/>  名称不需一样，并且在同一个目录-->
+        <package name=""/>
     </mappers>
 </configuration>
