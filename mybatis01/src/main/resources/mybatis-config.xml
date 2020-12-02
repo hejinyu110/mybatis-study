@@ -35,11 +35,12 @@
     </environments>
     <!-- mapper.xml register-->
     <mappers>
-        <mapper resource="com/he/dao/UserMapper.xml" />
+<!--        <mapper resource="com/he/dao/UserMapper.xml" />-->
        <!-- <mapper class="com.he.dao.UserDao"/>-->
         <!--当前这个 和上一个 只能有一个配合，不能有两个个配置信息，
         如果要同时使用需要将 名字统一为 UserMap-->
 
         <!--<mapper class="com.he.dao.UserDao"/>  名称不需一样，并且在同一个目录-->
+        <mapper resource="com/he/dao/*Mapper.xml" />
     </mappers>
 </configuration>
