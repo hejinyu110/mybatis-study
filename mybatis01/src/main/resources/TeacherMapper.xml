@@ -14,4 +14,32 @@
             and name =#{name}
         </if>
     </select>
+    <!--动态参数搜索信息 where  会自动将条件中的and  去掉 if 中 第一个不加 and 也可以将多次用到的提取到sql 标签中 然后 inclode 引入-->
+    <select id="getTeacher1">
+        select * from teacher
+       <where>
+          <include refid="if-title-auther"></include>
+       </where>
+    </select>
+    <!-- update 语句中  set 自动识别 是否去掉最后一个 逗号 或者自动加上逗号-->
+    <update id="updateTeacher">
+        update teacher
+        <set>
+            <if test="title!=null">
+                title = #{title},
+            </if>
+            <if test="author!=null">
+                author = #{author},
+            </if>
+        </set>
+            where id = #{id}
+    </update>
+    <sql id="if-title-auther">
+        <if test="id >0">
+            id >0
+        </if>
+        <if test="name !=null">
+            and name =#{name}
+        </if>
+    </sql>
 </mapper>
